@@ -6,8 +6,8 @@ const User = sequilize.define('user', {
     email: {type: DataTypes.STRING, unique: true},
     password: {type: DataTypes.STRING},
     roles: {type: DataTypes.STRING, defaultValue: 'USER'},
-    firstName: {type: DataTypes.STRING},
-    lastName: {type: DataTypes.STRING}
+    firstName: {type: DataTypes.STRING, defaultValue: ''},
+    lastName: {type: DataTypes.STRING, defaultValue: ''}
 })
 
 const Vote = sequilize.define('vote', {
@@ -20,21 +20,13 @@ const News = sequilize.define('news', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     title: {type: DataTypes.STRING, unique: true, allowNull: false},
     subtitle: {type: DataTypes.STRING},
-    date: {type: DataTypes.FLOAT, allowNull: false},
-    img: {type: DataTypes.STRING, allowNull: false},
+    img: {type: DataTypes.STRING},
 })
 
-const PostType = sequilize.define('postType', {
-    id: {type: DataTypes.INTEGER, primaryKey: true},
-    name: {type: DataTypes.STRING, unique: true, allowNull: false}
-})
 
 User.hasMany(Vote);
 Vote.belongsTo(User);
 
-News.hasOne(PostType);
-PostType.belongsTo(News);
-
 module.exports = {
-    User, Vote, News, PostType
+    User, Vote, News
 }
