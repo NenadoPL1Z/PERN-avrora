@@ -15,7 +15,14 @@ const TextFieldPasswordUI: FC<TextFieldUIProps> = (props) => {
             errorMessage={props.errorMessage}
             textField={{
                 ...props.textField,
-                type: viewType
+                type: viewType,
+                sx: {
+                    '& > div': {
+                        '& > input': {
+                            paddingRight: '45px'
+                        },
+                    },
+                }
             }}
             inputIcon={{
                 icon: viewIcon,

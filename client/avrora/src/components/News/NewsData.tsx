@@ -19,7 +19,7 @@ const NewsData = () => {
                         title={news.title}
                         subtitle={news.subtitle}
                         date={news.updatedAt}
-                        img={news.img}
+                        img={news.img as string}
                     />
                 ))
             }

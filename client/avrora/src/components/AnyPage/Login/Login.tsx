@@ -52,6 +52,7 @@ const Login: FC = () => {
                     }}
                     errorMessage='Введите пароль'
                     required={true}
+                    pattern='[^a-zA-Z0-9]'
                 />
                 <Box style={styles.error}>
                     {loginError}

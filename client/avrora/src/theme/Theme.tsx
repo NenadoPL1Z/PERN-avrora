@@ -22,14 +22,18 @@ interface themeProps {
 const Theme: FC<themeProps> = ({children}) => {
 
   const theme = createTheme({
+    palette: {
+      primary: {main: '#ff6505'},
+      secondary: {main: '#ffffff'}
+    },
     components: {
       MuiCssBaseline: {
         styleOverrides: documentDefaultStyles
-      }
+      },
     },
     status: {
       danger: 'red'
-    }
+    },
   })
 
 

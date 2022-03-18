@@ -12,12 +12,6 @@
     "route": "all"
   },
   {
-    "id": 3,
-    "title": "Темы",
-    "href": "/category",
-    "route": "all"
-  },
-  {
     "id": 4,
     "title": "Опросы",
     "href": "/vote",

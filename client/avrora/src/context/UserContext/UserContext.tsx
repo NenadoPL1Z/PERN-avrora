@@ -1,7 +1,7 @@
 import React, {FC, useContext, useEffect, useMemo, useState} from 'react';
 import {auth} from "../../http/userAPI";
 import {UserProviderProps} from "./types";
-import {UserModel, UserContext} from '../../models/User'
+import {UserModel, UserContext} from '../../models/IUserModel'
 import {useSecret} from "../../hook/useSecret";
 import {useCustomRouter} from "../../hook/useCustomRouter";
 
@@ -20,13 +20,17 @@ const UserProvider: FC<UserProviderProps> = ({children}) => {
     }, [user])
 
     useEffect(() => {
-        auth().then(user => {
-            const res = user as UserModel | 'Invalid User'
-            if (!(res === 'Invalid User')) {
-                setUser(user as UserModel)
-            }
+        try {
+            auth().then(user => {
+                const res = user as UserModel | 'Invalid User'
+                if (!(res === 'Invalid User')) {
+                    setUser(user as UserModel)
+                }
+                setIsLoading(false)
+            })
+        } catch (e) {
             setIsLoading(false)
-        })
+        }
     }, [])
 
     const userLogin = async (token: string) => {

@@ -1,7 +1,7 @@
 import {useEffect, useMemo, useState} from "react";
 import {useCustomRouter} from "../../hook/useCustomRouter";
 import {getPagesNews} from "../../http/userAPI";
-import {NewsItemModel} from "../../models/News";
+import {NewsItemModel} from "../../models/INewsModel";
 
 export const useNewsData = () => {
 
@@ -10,14 +10,19 @@ export const useNewsData = () => {
     const [newsData, setNewsData] = useState<NewsItemModel[]>([]);
 
     const category = useMemo(() => locationQuery?.category, [locationQuery])
+    const limit = 10
 
     useEffect(() => {
-        getPagesNews(5, 1)
+        try {
+            getPagesNews(limit, 1)
             .then(r => {
                 if (Array.isArray(r)) {
                     setNewsData(r as NewsItemModel[])
                 }
             })
+        } catch (e) {
+            console.log(e)
+        }
     }, [category])
 
 

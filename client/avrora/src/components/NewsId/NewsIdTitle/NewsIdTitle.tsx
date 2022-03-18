@@ -1,14 +1,18 @@
 import React, {FC} from 'react';
+import {useNewsIdTitleStyles} from './style'
 
 interface NewsIdTitleProps {
     title: string
 }
 
 const NewsIdTitle: FC<NewsIdTitleProps> = ({title}) => {
+
+    const {Title} = useNewsIdTitleStyles()
+
     return (
-        <div>
+        <Title>
             {title}
-        </div>
+        </Title>
     );
 };
 

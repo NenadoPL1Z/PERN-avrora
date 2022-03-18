@@ -11,7 +11,7 @@ export const useTextFieldUIStyles = () => ({
             '& > input': {
                 borderRadius: '10px',
                 color: '#ffffff',
-                paddingRight: '45px'
+                paddingRight: '15px'
             },
             '& > fieldset': {
                 borderColor: '#ffffff !important',
